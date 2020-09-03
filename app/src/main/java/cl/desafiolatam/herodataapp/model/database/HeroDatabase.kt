@@ -8,6 +8,8 @@ import androidx.room.RoomDatabase
 @Database(entities = [HeroEntity::class], version = 1)
 abstract class HeroDatabase : RoomDatabase() {
 
+    abstract fun getHeroDao() : HeroDao
+
     companion object {
         // Singleton prevents multiple instances of database opening at the
         // same time.
@@ -31,5 +33,4 @@ abstract class HeroDatabase : RoomDatabase() {
             }
         }
     }
-
 }

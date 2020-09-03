@@ -1,16 +1,19 @@
 package cl.desafiolatam.herodataapp.model
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import cl.desafiolatam.herodataapp.RetrofitClient
+import cl.desafiolatam.herodataapp.model.database.HeroDatabase
+import cl.desafiolatam.herodataapp.model.database.HeroEntity
 import cl.desafiolatam.herodataapp.model.pojo.Hero
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Repository {
+class Repository(context : Context) {
 
     var listHero = MutableLiveData<List<Hero>>()
+    var heroDatabase = HeroDatabase.getDatabase(context)
 
     fun loadApiData() {
         val call = RetrofitClient.retrofitInstance().allHeroes()
@@ -24,8 +27,13 @@ class Repository {
                 Log.d("Adapter", "${response.code()}")
                 Log.d("Adapter", "${response.body()}")
                 listHero.value = response.body()
+                heroConverter(response.body()!!)
             }
         })
+    }
+
+    fun heroConverter(listHero : List<Hero>) : List<HeroEntity> {
+        return listHero.map { hero -> HeroEntity(hero.id, hero.name, hero.powerstats, hero.slug, hero.images) }
     }
 
 }

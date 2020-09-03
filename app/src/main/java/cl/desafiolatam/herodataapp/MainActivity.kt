@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     private var heroList = ArrayList<Hero>()
     private lateinit var adapter : HeroAdapter
-    private var repository = Repository()
+    private lateinit var repository : Repository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = HeroAdapter(heroList)
         heroRecycler.adapter = adapter
+        repository = Repository(applicationContext)
 
         repository.loadApiData()
         repository.listHero.observe(this, Observer { adapter.updateItems(it) })

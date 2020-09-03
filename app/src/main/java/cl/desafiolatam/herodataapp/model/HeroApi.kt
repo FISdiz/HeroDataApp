@@ -1,4 +1,4 @@
-package cl.desafiolatam.herodataapp
+package cl.desafiolatam.herodataapp.model
 
 import cl.desafiolatam.herodataapp.model.pojo.Hero
 import retrofit2.Call

@@ -13,7 +13,7 @@ interface HeroDao {
     fun getAllHeroes() : LiveData<List<HeroEntity>>
 
     @Insert
-    fun insertHeroes(heroList : List<HeroEntity>)
-    // fun insertHero(hero : HeroEntity)
+    //fun insertHeroes(heroList : List<HeroEntity>)
+    fun insertHero(hero : HeroEntity)
 
 }

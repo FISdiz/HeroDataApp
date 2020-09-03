@@ -1,8 +1,7 @@
-package cl.desafiolatam.herodataapp
+package cl.desafiolatam.herodataapp.model
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 
 const val BASE_URL = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/"
