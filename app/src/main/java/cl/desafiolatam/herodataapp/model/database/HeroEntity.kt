@@ -10,7 +10,7 @@ import cl.desafiolatam.herodataapp.model.pojo.Powerstats
 data class HeroEntity (
     @PrimaryKey val id : Int,
     val name : String,
-    @Embedded val powerstats: Powerstats,
+    @Embedded(prefix = "ps_") val powerstats: Powerstats,
     val slug : String,
-    @Embedded val images : HeroImages
+    @Embedded(prefix = "images_") val images : HeroImages
     )

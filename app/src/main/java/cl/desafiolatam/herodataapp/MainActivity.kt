@@ -2,14 +2,16 @@ package cl.desafiolatam.herodataapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import cl.desafiolatam.herodataapp.model.pojo.Hero
 import cl.desafiolatam.herodataapp.model.Repository
+import cl.desafiolatam.herodataapp.model.pojo.HeroMini
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var heroList = ArrayList<Hero>()
+    private var heroList = ArrayList<HeroMini>()
     private lateinit var adapter : HeroAdapter
     private lateinit var repository : Repository
 
@@ -22,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         repository = Repository(applicationContext)
 
         repository.loadApiData()
-        repository.listHero.observe(this, Observer { adapter.updateItems(it) })
+        repository.listHero.observe(this, Observer {
+            Log.d("TAG","$it")
+            adapter.updateItems(it)
+        })
+
     }
 }
