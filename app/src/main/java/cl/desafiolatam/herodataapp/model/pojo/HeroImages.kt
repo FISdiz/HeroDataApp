@@ -1,4 +1,4 @@
-package cl.desafiolatam.herodataapp.model
+package cl.desafiolatam.herodataapp.model.pojo
 
 data class HeroImages (
     val xs : String,

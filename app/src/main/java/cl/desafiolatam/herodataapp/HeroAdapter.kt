@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import cl.desafiolatam.herodataapp.model.Hero
+import cl.desafiolatam.herodataapp.model.pojo.Hero
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_hero.view.*
 

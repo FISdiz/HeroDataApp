@@ -2,15 +2,10 @@ package cl.desafiolatam.herodataapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import cl.desafiolatam.herodataapp.model.Hero
+import cl.desafiolatam.herodataapp.model.pojo.Hero
 import cl.desafiolatam.herodataapp.model.Repository
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 

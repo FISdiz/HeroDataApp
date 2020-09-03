@@ -2,8 +2,8 @@ package cl.desafiolatam.herodataapp.model
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import cl.desafiolatam.herodataapp.HeroAdapter
 import cl.desafiolatam.herodataapp.RetrofitClient
+import cl.desafiolatam.herodataapp.model.pojo.Hero
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

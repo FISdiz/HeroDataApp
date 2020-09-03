@@ -1,6 +1,6 @@
 package cl.desafiolatam.herodataapp
 
-import cl.desafiolatam.herodataapp.model.Hero
+import cl.desafiolatam.herodataapp.model.pojo.Hero
 import retrofit2.Call
 import retrofit2.http.GET
 
