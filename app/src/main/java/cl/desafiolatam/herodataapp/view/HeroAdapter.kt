@@ -1,10 +1,10 @@
-package cl.desafiolatam.herodataapp
+package cl.desafiolatam.herodataapp.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import cl.desafiolatam.herodataapp.model.pojo.Hero
+import cl.desafiolatam.herodataapp.R
 import cl.desafiolatam.herodataapp.model.pojo.HeroMini
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_hero.view.*
