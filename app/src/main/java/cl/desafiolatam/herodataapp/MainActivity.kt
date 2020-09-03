@@ -3,7 +3,10 @@ package cl.desafiolatam.herodataapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import cl.desafiolatam.herodataapp.model.Hero
+import cl.desafiolatam.herodataapp.model.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -13,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private var heroList = ArrayList<Hero>()
     private lateinit var adapter : HeroAdapter
+    private var repository = Repository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,22 +25,7 @@ class MainActivity : AppCompatActivity() {
         adapter = HeroAdapter(heroList)
         heroRecycler.adapter = adapter
 
-        loadApiData()
-    }
-
-    private fun loadApiData() {
-        val call = RetrofitClient.retrofitInstance().allHeroes()
-
-        call.enqueue(object : Callback<List<Hero>> {
-            override fun onFailure(call: Call<List<Hero>>, t: Throwable) {
-                Log.d("Adapter", "Error al cargar heroes")
-            }
-
-            override fun onResponse(call: Call<List<Hero>>, response: Response<List<Hero>>) {
-                Log.d("Adapter", "${response.code()}")
-                Log.d("Adapter", "${response.body()}")
-                adapter.updateItems(response.body()!!)
-            }
-        })
+        repository.loadApiData()
+        repository.listHero.observe(this, Observer { adapter.updateItems(it) })
     }
 }
