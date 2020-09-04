@@ -1,6 +1,7 @@
 package cl.desafiolatam.herodataapp.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_hero_list.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class HeroListFragment : Fragment() {
+class HeroListFragment : Fragment(), NotifyClick {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -33,7 +34,6 @@ class HeroListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_hero_list, container, false)
     }
 
@@ -50,7 +50,7 @@ class HeroListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = HeroAdapter(heroList)
+        adapter = HeroAdapter(heroList,this)
         heroRecycler.adapter = adapter
         //heroViewModel = ViewModelProvider(this).get(HeroViewModel::class.java)
         val heroViewModel : HeroViewModel by activityViewModels()
@@ -59,4 +59,12 @@ class HeroListFragment : Fragment() {
             adapter.updateItems(it)
         })
     }
+
+    override fun notifyClick(heroMini: HeroMini) {
+        Log.d("notifyClick", "genera click")
+    }
+}
+
+interface NotifyClick {
+    fun notifyClick(heroMini : HeroMini)
 }

@@ -10,7 +10,7 @@ import cl.desafiolatam.herodataapp.model.pojo.HeroMini
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_hero.view.*
 
-class HeroAdapter (private var heroDataset : MutableList<HeroMini>)  : RecyclerView.Adapter<HeroAdapter.HeroViewHolder>() {
+class HeroAdapter (private var heroDataset : MutableList<HeroMini>, val notifier : NotifyClick)  : RecyclerView.Adapter<HeroAdapter.HeroViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_hero, parent, false)
@@ -27,6 +27,7 @@ class HeroAdapter (private var heroDataset : MutableList<HeroMini>)  : RecyclerV
 
         holder.itemView.setOnClickListener{
             Log.d("viewholder", "${heroDataset.get(position)}")
+            notifier.notifyClick(heroDataset.get(position))
         }
     }
 
