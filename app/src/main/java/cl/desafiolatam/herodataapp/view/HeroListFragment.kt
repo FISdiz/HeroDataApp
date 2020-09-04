@@ -1,4 +1,4 @@
-package cl.desafiolatam.herodataapp
+package cl.desafiolatam.herodataapp.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import cl.desafiolatam.herodataapp.R
 import cl.desafiolatam.herodataapp.model.pojo.HeroMini
-import cl.desafiolatam.herodataapp.view.HeroAdapter
 import cl.desafiolatam.herodataapp.viewmodel.HeroViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_hero_list.*
 
 private const val ARG_PARAM1 = "param1"

@@ -1,5 +1,6 @@
 package cl.desafiolatam.herodataapp.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +23,11 @@ class HeroAdapter (private var heroDataset : MutableList<HeroMini>)  : RecyclerV
 
     override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
         holder.textName.text =  heroDataset.get(position).name
-
         Picasso.get().load(heroDataset.get(position).images_sm).into(holder.imageMiniHero)
+
+        holder.itemView.setOnClickListener{
+            Log.d("viewholder", "${heroDataset.get(position)}")
+        }
     }
 
     fun updateItems (it: List<HeroMini>) {
