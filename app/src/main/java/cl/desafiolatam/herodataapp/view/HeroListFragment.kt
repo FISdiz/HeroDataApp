@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import cl.desafiolatam.herodataapp.HeroDetailFragment
 import cl.desafiolatam.herodataapp.R
 import cl.desafiolatam.herodataapp.model.pojo.HeroMini
 import cl.desafiolatam.herodataapp.viewmodel.HeroViewModel
@@ -24,6 +25,7 @@ class HeroListFragment : Fragment() {
     private var heroList = ArrayList<HeroMini>()
     private lateinit var adapter : HeroAdapter
     private lateinit var heroViewModel : HeroViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,10 @@ class HeroListFragment : Fragment() {
         })
         adapter.heroSelected.observe(viewLifecycleOwner, Observer {
             Log.d("lifeCycleOwner", "heroe seleccionado $it")
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.container_fragments, HeroDetailFragment.newInstance("",""),"detail")
+                .addToBackStack("detail")
+                .commit()
         })
     }
 }
