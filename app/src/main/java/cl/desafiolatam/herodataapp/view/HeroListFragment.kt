@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import cl.desafiolatam.herodataapp.HeroDetailFragment
 import cl.desafiolatam.herodataapp.R
 import cl.desafiolatam.herodataapp.model.pojo.HeroMini
 import cl.desafiolatam.herodataapp.viewmodel.HeroViewModel
