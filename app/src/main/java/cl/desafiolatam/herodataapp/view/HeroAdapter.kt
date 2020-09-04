@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.herodataapp.R
 import cl.desafiolatam.herodataapp.model.pojo.HeroMini
@@ -21,12 +22,15 @@ class HeroAdapter (private var heroDataset : MutableList<HeroMini>)  : RecyclerV
         return heroDataset.size
     }
 
+    val heroSelected = MutableLiveData<HeroMini>()
+
     override fun onBindViewHolder(holder: HeroViewHolder, position: Int) {
         holder.textName.text =  heroDataset.get(position).name
         Picasso.get().load(heroDataset.get(position).images_sm).into(holder.imageMiniHero)
 
         holder.itemView.setOnClickListener{
             Log.d("viewholder", "${heroDataset.get(position)}")
+            heroSelected.value = heroDataset.get(position)
         }
     }
 

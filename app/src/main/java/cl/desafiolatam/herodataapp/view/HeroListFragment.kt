@@ -1,11 +1,13 @@
 package cl.desafiolatam.herodataapp.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import cl.desafiolatam.herodataapp.R
 import cl.desafiolatam.herodataapp.model.pojo.HeroMini
@@ -33,7 +35,6 @@ class HeroListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_hero_list, container, false)
     }
 
@@ -57,6 +58,9 @@ class HeroListFragment : Fragment() {
 
         heroViewModel.listHero.observe(viewLifecycleOwner, Observer {
             adapter.updateItems(it)
+        })
+        adapter.heroSelected.observe(viewLifecycleOwner, Observer {
+            Log.d("lifeCycleOwner", "heroe seleccionado $it")
         })
     }
 }
